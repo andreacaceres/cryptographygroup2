@@ -1,7 +1,7 @@
-const plainText = 'MASSEFFECT';
-const cipherText = 'SMIIOVVOAP';
 const a = 7;
-const b = 12;
+const b = 26;
+const plainText = 'MASSEFFECT';
+const cipherText = 'GAWWCJJCOD';
 const modulo = 26;
 const mayus_ASCII = 65;
 const minus_ASCII = 97;
@@ -14,19 +14,31 @@ const mod = ( n, m ) => {
   return ((n % m) + m) % m;
 }
 
-const getInverseMultipleOf = ( a ) => {
-  let result = 0;
-  const arrayNegativeNumbers = Array(100).fill(1).map((n, i) => (n + i) * -1);
-  for ( const i in arrayNegativeNumbers ) {
-    let number = arrayNegativeNumbers[i];
-    let m = a*number;
-    let r = mod( m, modulo );
-    if ( r === 1 ) {
-      result = number;
-      break;
-    }
+const gcdext = ( a1, b1 ) => {
+  const output = {
+    prevx: 1,
+    x: 0,
+    prevy: 0,
+    y: 1,
+    tmp: 0
+  };
+  let q;
+  while ( b1 > 0 ) {
+    q = Math.floor( a1/b1 );
+    output.tmp = output.x;
+    output.x = output.prevx - q*output.x;
+    output.prevx = output.tmp;
+
+    output.tmp = output.y;
+    output.y = output.prevy - q*output.y;
+    output.prevy = output.tmp;
+
+    output.tmp = a1;
+    a1 = b1;
+    b1 = mod( output.tmp, b1 );
+    output.a = a1;
   }
-  return result;
+  return output;
 }
 
 const letterShift = ( asciiLetterCode, a, s, f ) => {
@@ -52,8 +64,9 @@ const affineCipherEncryptDecrypt = ( input, a1, b1, flag ) => {
   return output;
 }
 
+const gcdextOutput = gcdext( a, b );
+console.log( `( gcd, x, y ) = ${gcdextOutput.a}, ${gcdextOutput.prevx}, ${gcdextOutput.prevy}` );
 const cipherTextResult = affineCipherEncryptDecrypt( plainText, a, b, flag.decrypt );
 console.log( cipherTextResult );
-const a_inv = getInverseMultipleOf( a );
-const plainTextResult = affineCipherEncryptDecrypt ( cipherText, a_inv, b, flag.encrypt );
+const plainTextResult = affineCipherEncryptDecrypt ( cipherText, gcdextOutput.prevx, b, flag.encrypt );
 console.log( plainTextResult );
