@@ -18,3 +18,4 @@ const gcdrOutput = gcdr( a, b );
 console.log( `El gcd( ${a}, ${b} ) = ${gcdrOutput}` );
 const lcmOutput = lcm( a, b );
 console.log(`Por lo tanto, el lcm( ${a}, ${b} ) = ${lcmOutput}`);
+console.log("test milton");
