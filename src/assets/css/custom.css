@@ -1,0 +1,41 @@
+.v-main__wrap {
+    background-color: #1B1B41!important;
+}
+
+#app_title {
+    font-size: 2.25rem;
+}
+
+#app {
+    font-family: "Mochiy Pop P One", "Lexend", sans-serif";
+}
+
+#form_container {
+    /*background-color: rgb(165 180 252);*/
+    background-color: rgb(226 232 240);
+    width: 50%;
+}
+
+.v-sheet--shaped {
+    border-radius: 24px 4px;
+    /*background-color: #6565FD!important;*/
+    background-color: #5C6BC0!important;
+    
+}
+
+.rounded-card {
+    border-radius: 24px;
+}
+
+.card-title {
+    color: #fff;
+}
+
+.card-subtitle {
+    color: #E5E5FE!important;
+}
+
+.v-footer .v-card {
+    background-color: #1B1B41!important;
+}
+

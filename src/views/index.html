@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+
+        <link rel="icon" href="../../public/favicon.ico" />
+
+        <title>Algorithm Calculator</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+        <link href="../assets/css/custom.css" rel="stylesheet"/>
+
+    </head>
+    <body>
+        <div id="app">
+            <v-app>
+                <v-main>
+                    <div class="d-flex flex-column align-center justify-center py-8 mb-10">
+                        <div class="py-5 font-bold text-center">
+                            <h2 id="app_title" class="white--text">Algorithm Calculator with                            
+                                <v-icon
+                                    large
+                                    dark
+                                >
+                                    mdi-language-javascript
+                              </v-icon>  
+                            </h2>   
+                        </div>
+                        <v-row class="mt-2 justify-center mb-4 px-10">
+                            <v-col md="2" sm="6" xs="12">
+                                <v-card shaped class="rounded-card">
+                                    <v-card-title class="card-title">Affin Cipher</v-card-title>
+                                    <v-card-subtitle class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-subtitle>
+                                    <v-card-actions>
+                                        <v-btn icon>
+                                            <v-icon>mdi-calculator-variant</v-icon>
+                                        </v-btn>
+                                    </v-card-actions>
+                                  </v-card>
+                            </v-col>
+                            <v-col md="2" sm="6" xs="12">
+                                <v-card shaped class="rounded-card">
+                                    <v-card-title class="card-title">Caesar Cipher</v-card-title>
+                                    <v-card-subtitle class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-subtitle>
+                                    <v-card-actions>
+                                        <v-btn icon>
+                                        <v-icon>mdi-calculator-variant</v-icon>
+                                        </v-btn>
+                                    </v-card-actions>
+                                  </v-card>
+                            </v-col>
+                            <v-col md="2" sm="6" xs="12">
+                                <v-card shaped class="rounded-card">
+                                    <v-card-title class="card-title">Euclide Cipher</v-card-title>
+                                    <v-card-subtitle class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-subtitle>
+                                    <v-card-actions>
+                                        <v-btn icon>
+                                        <v-icon>mdi-calculator-variant</v-icon>
+                                        </v-btn>
+                                    </v-card-actions>
+                                  </v-card>
+                            </v-col>
+                            <v-col md="2" sm="6" xs="12">
+                                <v-card shaped class="rounded-card">
+                                    <v-card-title class="card-title">Chinese Remainder</v-card-title>
+                                    <v-card-subtitle class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-subtitle>
+                                    <v-card-actions>
+                                        <v-btn icon>
+                                        <v-icon>mdi-calculator-variant</v-icon>
+                                        </v-btn>
+                                    </v-card-actions>
+                                  </v-card>
+                            </v-col>
+                        </v-row>
+                        <div id="form_container_parent" class="d-flex justify-center mt-4">
+                            <div id="form_container" class="rounded">
+                                <v-row class="pa-10">
+                                    <v-col cols="12">
+                                        <v-text-field
+                                            :v-model="valueA"
+                                            label="A Value..."
+                                    ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12">
+                                        <v-text-field
+                                            :v-model="valueB"
+                                            label="B Value..."
+                                    ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12">
+                                        <v-text-field
+                                            :v-model="valueShift"
+                                            label="Shift Value..."
+                                    ></v-text-field>
+                                    </v-col>
+                                </v-row>
+                            </div>
+                        </div>
+
+                        <v-btn @click="calculate" color="success" class="mt-10">
+                            Calculate
+                        </v-btn>
+                    </div>
+
+                    <v-footer
+                        dark
+                        padless
+                    >
+                        <v-card
+                        class="flex"
+                        flat
+                        tile
+                        >
+                        <v-card-text class="py-2 white--text text-center">
+                            {{ new Date().getFullYear() }} — <strong>Cryptography Group # 2</strong>
+                        </v-card-text>
+                        </v-card>
+                    </v-footer>
+                </v-main>
+            </v-app>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>    
+        <script>
+            new Vue({
+                el: '#app',
+                vuetify: new Vuetify({
+                    //theme: { dark: true },
+                }),
+                data: {
+                    valueA: "",
+                    valueB: "",
+                    valueShift: "",
+                    algType: "",
+                    icons: [
+                    'mdi-facebook',
+                    'mdi-twitter',
+                    'mdi-linkedin',
+                    'mdi-instagram',
+                  ],
+                },
+                methods:{
+                    calculate(){
+                    }
+                }
+              })
+        </script>
+    </body>
+</html>
