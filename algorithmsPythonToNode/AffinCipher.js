@@ -1,5 +1,5 @@
 const plainText = 'MASSEFFECT';
-const cipherText = 'SMIIOVVOAP';
+const cipherText = 'AUQQWDDWIX';
 const a = 7;
 const b = 12;
 const modulo = 26;
@@ -10,9 +10,7 @@ const flag = {
   decrypt: 0
 }
 
-const mod = ( n, m ) => {
-  return ((n % m) + m) % m;
-}
+const mod = ( n, m ) => ((n % m) + m) % m;
 
 const getInverseMultipleOf = ( a ) => {
   let result = 0;

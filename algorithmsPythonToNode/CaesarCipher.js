@@ -13,9 +13,7 @@ const shift = 3;
 // TESTING for decrypt
 const cipherText = 'WKH OHJHQG RI CHOGD';
 
-const mod = (n, m) => {
-  return ((n % m) + m) % m;
-}
+const mod = ( n, m ) => ((n % m) + m) % m;
 
 const letterShift = ( asciiLetterCode, s, f ) => {
   return ( f ) ? asciiLetterCode + s : asciiLetterCode - s;
