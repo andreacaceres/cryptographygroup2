@@ -43,7 +43,10 @@
                             <v-col md="2" sm="6" xs="12">
                                 <v-card shaped class="rounded-card" @click="selectAlgorithm(affinCipherCode)">
                                     <v-card-title class="card-title">{{ affinCipherCode }}</v-card-title>
-                                    <v-card-subtitle class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-subtitle>
+                                    <v-card-subtitle class="card-subtitle">
+                                        El cifrado afín es una extensión del cifrado César. Proporciona una mayor seguridad debido a la introducción del parámetro b, 
+                                        que agrega un desplazamiento adicional en el cifrado. El cifrado afín es vulnerable a ataques y otros métodos criptoanalíticos más avanzados.
+                                    </v-card-subtitle>
                                     <v-card-actions>
                                         <v-btn icon>
                                             <v-icon>mdi-calculator-variant</v-icon>
@@ -54,7 +57,11 @@
                             <v-col md="2" sm="6" xs="12">
                                 <v-card shaped class="rounded-card" @click="selectAlgorithm(caesarCipherCode)">
                                     <v-card-title class="card-title">{{ caesarCipherCode }}</v-card-title>
-                                    <v-card-subtitle class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-subtitle>
+                                    <v-card-subtitle class="card-subtitle">
+                                        El cifrado César es un tipo de cifrado de sustitución monoalfabético en el que cada letra en el texto original es desplazada un número fijo 
+                                        de posiciones hacia la derecha en el alfabeto para obtener el texto cifrado. El cifrado César es fácilmente vulnerable a ataques de fuerza bruta y 
+                                        análisis de frecuencia debido a su naturaleza predecible y patrones repetitivos.
+                                    </v-card-subtitle>
                                     <v-card-actions>
                                         <v-btn icon>
                                         <v-icon>mdi-calculator-variant</v-icon>
