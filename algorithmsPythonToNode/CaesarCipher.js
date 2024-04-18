@@ -1,25 +1,29 @@
-const modulo = 26;
-const mayus_ASCII = 65;
-const minus_ASCII = 97;
-const flag = {
-  encrypt: 1,
-  decrypt: 0
-}
+// const modulo = 26;
+// const mayus_ASCII = 65;
+// const minus_ASCII = 97;
+// const flag = {
+//   encrypt: 1,
+//   decrypt: 0
+// }
 
-// TESTING for encrypt
-const plainText = 'THE LEGEND OF ZELDA';
-const shift = 3;
+// // TESTING for encrypt
+// const plainText = 'THE LEGEND OF ZELDA';
+// const shift = 3;
 
-// TESTING for decrypt
-const cipherText = 'WKH OHJHQG RI CHOGD';
+// // TESTING for decrypt
+// const cipherText = 'WKH OHJHQG RI CHOGD';
 
-const mod = ( n, m ) => ((n % m) + m) % m;
+// const mod = ( n, m ) => ((n % m) + m) % m;
 
-const letterShift = ( asciiLetterCode, s, f ) => {
-  return ( f ) ? asciiLetterCode + s : asciiLetterCode - s;
-}
+// const letterShift = ( asciiLetterCode, s, f ) => {
+//   return ( f ) ? asciiLetterCode + s : asciiLetterCode - s;
+// }
 
 const caesar_algorithm = ( input, s, flag ) => {
+  console.log("caesar------")
+  console.log(input)
+  console.log(s)
+  console.log(flag)
   let output = '';
   let codeAscii = 0;
   const inputTextToArray = input.split('');
@@ -38,13 +42,13 @@ const caesar_algorithm = ( input, s, flag ) => {
   return output;
 }
 
-const breakingCaesarCipher = ( cipher ) => {
-  const arrayShift = Array(26).fill(1).map((n, i) => n + i);
-  for ( const i in arrayShift ) {
-    const getCipherText = caesar_algorithm(cipher, i, flag.decrypt);
-    console.log(`Shift: ${i} -> ${getCipherText}`);
-  }
-}
+// const breakingCaesarCipher = ( cipher ) => {
+//   const arrayShift = Array(26).fill(1).map((n, i) => n + i);
+//   for ( const i in arrayShift ) {
+//     const getCipherText = caesar_algorithm(cipher, i, flag.decrypt);
+//     console.log(`Shift: ${i} -> ${getCipherText}`);
+//   }
+// }
 
 // const plainTextResult = caesar_algorithm(plainText, shift, flag.encrypt);
 // console.log(`The plaint text: ${plainText} encrypted is ${plainTextResult}`);

@@ -4,7 +4,7 @@
 // const eq = [ [3, 5], [2, 6], [4, 7] ]; // 368
 const eq = [ [2, 3], [2, 4], [1, 5] ]; // 26
 
-const mod = ( n, m ) => ((n % m) + m) % m;
+// const mod = ( n, m ) => ((n % m) + m) % m;
 
 const gcdext = ( a1, b1 ) => {
   const output = {
