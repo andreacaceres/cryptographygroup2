@@ -10,9 +10,7 @@ const flag = {
   decrypt: 0
 }
 
-const mod = ( n, m ) => {
-  return ((n % m) + m) % m;
-}
+const mod = ( n, m ) => ((n % m) + m) % m;
 
 const gcdext = ( a1, b1 ) => {
   const output = {
