@@ -34,7 +34,7 @@
                         </div>
                         <v-row class="mt-2 justify-center mb-4 px-10">
                             <v-col md="2" sm="6" xs="12">
-                                <v-card shaped class="rounded-card">
+                                <v-card shaped class="rounded-card" @click="selectAlgorithm('AFFIN')">
                                     <v-card-title class="card-title">Affin Cipher</v-card-title>
                                     <v-card-subtitle class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-subtitle>
                                     <v-card-actions>
@@ -42,10 +42,10 @@
                                             <v-icon>mdi-calculator-variant</v-icon>
                                         </v-btn>
                                     </v-card-actions>
-                                  </v-card>
+                                </v-card>
                             </v-col>
                             <v-col md="2" sm="6" xs="12">
-                                <v-card shaped class="rounded-card">
+                                <v-card shaped class="rounded-card" @click="selectAlgorithm('CAESAR')">
                                     <v-card-title class="card-title">Caesar Cipher</v-card-title>
                                     <v-card-subtitle class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-subtitle>
                                     <v-card-actions>
@@ -56,7 +56,7 @@
                                   </v-card>
                             </v-col>
                             <v-col md="2" sm="6" xs="12">
-                                <v-card shaped class="rounded-card">
+                                <v-card shaped class="rounded-card" @click="selectAlgorithm('EUCLIDE')">
                                     <v-card-title class="card-title">Euclide Cipher</v-card-title>
                                     <v-card-subtitle class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-subtitle>
                                     <v-card-actions>
@@ -67,7 +67,7 @@
                                   </v-card>
                             </v-col>
                             <v-col md="2" sm="6" xs="12">
-                                <v-card shaped class="rounded-card">
+                                <v-card shaped class="rounded-card" @click="selectAlgorithm('CHINESE')">
                                     <v-card-title class="card-title">Chinese Remainder</v-card-title>
                                     <v-card-subtitle class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-subtitle>
                                     <v-card-actions>
@@ -78,34 +78,38 @@
                                   </v-card>
                             </v-col>
                         </v-row>
-                        <div id="form_container_parent" class="d-flex justify-center mt-4">
+                        <div id="form_container_parent" class="d-flex justify-center mt-4" v-if="algType!=='' && algType!==null">
                             <div id="form_container" class="rounded">
                                 <v-row class="pa-10">
                                     <v-col cols="12">
                                         <v-text-field
                                             :v-model="valueA"
-                                            label="A Value..."
+                                            label="A Value"
                                     ></v-text-field>
                                     </v-col>
                                     <v-col cols="12">
                                         <v-text-field
                                             :v-model="valueB"
-                                            label="B Value..."
+                                            label="B Value"
                                     ></v-text-field>
                                     </v-col>
                                     <v-col cols="12">
                                         <v-text-field
                                             :v-model="valueShift"
-                                            label="Shift Value..."
+                                            label="Shift Value"
                                     ></v-text-field>
                                     </v-col>
                                 </v-row>
                             </div>
-                        </div>
 
-                        <v-btn @click="calculate" color="success" class="mt-10">
-                            Calculate
-                        </v-btn>
+                            <v-btn @click="calculate" class="mt-10 white--text submit-button">
+                                Calculate
+                            </v-btn>
+
+                            <div class="mt-4 white--text resultado">
+                                <h3>Resultado: </p> {{ resultado }}
+                            </div>
+                        </div>
                     </div>
 
                     <v-footer
@@ -139,15 +143,13 @@
                     valueB: "",
                     valueShift: "",
                     algType: "",
-                    icons: [
-                    'mdi-facebook',
-                    'mdi-twitter',
-                    'mdi-linkedin',
-                    'mdi-instagram',
-                  ],
+                    resultado: "",
                 },
                 methods:{
                     calculate(){
+                    },
+                    selectAlgorithm(value){
+                        this.algType = value
                     }
                 }
               })

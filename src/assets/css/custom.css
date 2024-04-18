@@ -35,7 +35,24 @@
     color: #E5E5FE!important;
 }
 
+.v-footer {
+    position: absolute; 
+    bottom: 0; 
+}
+
 .v-footer .v-card {
     background-color: #1B1B41!important;
+}
+
+.rounded-card {
+    cursor: pointer;
+}
+
+.submit-button {
+    background-color: #5C6BC0!important;
+}
+
+.resultado {
+    font-size: 20px;
 }
 
