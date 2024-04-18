@@ -21,7 +21,7 @@
         <script src="algorithmsPythonToNode/AffinCipher.js"></script>
         <script src="algorithmsPythonToNode/CaesarCipher.js"></script>
         <!-- <script src="algorithmsPythonToNode/EuclideAlgorithmExtended.js"></script> -->
-        <!-- <script src="algorithmsPythonToNode/ChineseRemainderTheorem.js"></script> -->
+        <script src="algorithmsPythonToNode/ChineseRemainderTheorem.js"></script>
         <!-- /End Algorithms -->
     </head>
     <body>
@@ -41,11 +41,12 @@
                         </div>
                         <v-row class="mt-2 justify-center mb-4 px-10">
                             <v-col md="2" sm="6" xs="12">
-                                <v-card shaped class="rounded-card" @click="selectAlgorithm(affinCipherCode)">
-                                    <v-card-title class="card-title">{{ affinCipherCode }}</v-card-title>
+                                <v-card shaped class="rounded-card" @click="selectAlgorithm(caesarCipherCode)">
+                                    <v-card-title class="card-title">{{ caesarCipherCode }}</v-card-title>
                                     <v-card-subtitle class="card-subtitle">
-                                        El cifrado afín es una extensión del cifrado César. Proporciona una mayor seguridad debido a la introducción del parámetro b, 
-                                        que agrega un desplazamiento adicional en el cifrado. El cifrado afín es vulnerable a ataques y otros métodos criptoanalíticos más avanzados.
+                                        El cifrado César es un tipo de cifrado de sustitución monoalfabético en el que cada letra en el texto original es desplazada un número fijo 
+                                        de posiciones hacia la derecha en el alfabeto para obtener el texto cifrado. El cifrado César es fácilmente vulnerable a ataques de fuerza bruta y 
+                                        análisis de frecuencia debido a su naturaleza predecible y patrones repetitivos.
                                     </v-card-subtitle>
                                     <v-card-actions>
                                         <v-btn icon>
@@ -55,12 +56,11 @@
                                 </v-card>
                             </v-col>
                             <v-col md="2" sm="6" xs="12">
-                                <v-card shaped class="rounded-card" @click="selectAlgorithm(caesarCipherCode)">
-                                    <v-card-title class="card-title">{{ caesarCipherCode }}</v-card-title>
+                                <v-card shaped class="rounded-card" @click="selectAlgorithm(affinCipherCode)">
+                                    <v-card-title class="card-title">{{ affinCipherCode }}</v-card-title>
                                     <v-card-subtitle class="card-subtitle">
-                                        El cifrado César es un tipo de cifrado de sustitución monoalfabético en el que cada letra en el texto original es desplazada un número fijo 
-                                        de posiciones hacia la derecha en el alfabeto para obtener el texto cifrado. El cifrado César es fácilmente vulnerable a ataques de fuerza bruta y 
-                                        análisis de frecuencia debido a su naturaleza predecible y patrones repetitivos.
+                                        El cifrado afín es una extensión del cifrado César. Proporciona una mayor seguridad debido a la introducción del parámetro b, 
+                                        que agrega un desplazamiento adicional en el cifrado. El cifrado afín es vulnerable a ataques y otros métodos criptoanalíticos más avanzados.
                                     </v-card-subtitle>
                                     <v-card-actions>
                                         <v-btn icon>
@@ -87,7 +87,9 @@
                             <v-col md="2" sm="6" xs="12">
                                 <v-card shaped class="rounded-card" @click="selectAlgorithm(chineseRemainderCode)">
                                     <v-card-title class="card-title">{{ chineseRemainderCode }}</v-card-title>
-                                    <v-card-subtitle class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-subtitle>
+                                    <v-card-subtitle class="card-subtitle">
+                                        El teorema del resto chino es un método matemático que permite resolver sistemas de congruencias simultáneas 
+                                        de forma eficiente.</v-card-subtitle>
                                     <v-card-actions>
                                         <v-btn icon>
                                         <v-icon>mdi-calculator-variant</v-icon>
@@ -115,13 +117,13 @@
                                             label="Text"
                                         ></v-text-field>
                                     </v-col>
-                                    <v-col cols="12" v-if="this.algType===this.affinCipherCode || this.algType===this.euclideCipherCode || this.algType===this.chineseRemainderCode">
+                                    <v-col cols="12" v-if="this.algType===this.affinCipherCode || this.algType===this.euclideCipherCode">
                                         <v-text-field
                                             v-model="valueA"
                                             label="A Value"
                                         ></v-text-field>
                                     </v-col>
-                                    <v-col cols="12" v-if="this.algType===this.affinCipherCode || this.algType===this.euclideCipherCode || this.algType===this.chineseRemainderCode">
+                                    <v-col cols="12" v-if="this.algType===this.affinCipherCode || this.algType===this.euclideCipherCode">
                                         <v-text-field
                                             v-model="valueB"
                                             label="B Value"
@@ -131,6 +133,36 @@
                                         <v-text-field
                                             v-model="valueShift"
                                             label="Shift Value"
+                                        ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" v-if="this.algType===this.chineseRemainderCode">
+                                        n = <v-text-field
+                                            v-model="valueA1"
+                                            label="r1"
+                                        ></v-text-field>
+                                        (mod n) = <v-text-field
+                                            v-model="valueB1"
+                                            label="N1"
+                                        ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" v-if="this.algType===this.chineseRemainderCode">
+                                        n = <v-text-field
+                                            v-model="valueA2"
+                                            label="r2"
+                                        ></v-text-field>
+                                        (mod n) = <v-text-field
+                                            v-model="valueB2"
+                                            label="N2"
+                                        ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" v-if="this.algType===this.chineseRemainderCode">
+                                        n = <v-text-field
+                                            v-model="valueA3"
+                                            label="r3"
+                                        ></v-text-field>
+                                        (mod n) = <v-text-field
+                                            v-model="valueB3"
+                                            label="N3"
                                         ></v-text-field>
                                     </v-col>
                                 </v-row>
@@ -143,7 +175,6 @@
 
                         <div class="white--text resultado text-center" v-if="algType!=='' && algType!==null && resultado!==''">
                             <h3><b>Result:</b></h3>
-                            <!-- {{ if this.algType === this.euclideCipherCode }} -->
                             <span>{{ resultado }}</span>
                         </div>
                     </div>
@@ -178,6 +209,12 @@
                     valuePlaintext: "",
                     valueA: "",
                     valueB: "",
+                    valueA1: "",
+                    valueB1: "",
+                    valueA2: "",
+                    valueB2: "",
+                    valueA3: "",
+                    valueB3: "",
                     valueShift: "",
                     algType: "",
                     resultado: "",
@@ -199,6 +236,7 @@
                 },
                 methods:{
                     calculate(){
+                        let output = 0;
                         if(this.algType===this.affinCipherCode){
                             this.resultado = affineCipherEncryptDecrypt(this.valuePlaintext, this.valueA, this.valueB, this.cipherAction)
                         }
@@ -206,7 +244,11 @@
                             this.resultado = caesar_algorithm(this.valuePlaintext, this.valueShift, this.cipherAction)
                         }
                         else if (this.algType === this.euclideCipherCode) {
-                            this.resultado = "gcd( " + this.valueA + ", " + this.valueB + " ) = " + "( " + gcdext(this.valueA, this.valueB).a + ", " + gcdext(this.valueA, this.valueB).prevx + ", " + gcdext(this.valueA, this.valueB).prevy + " )";
+                            output = gcdext(this.valueA, this.valueB);
+                            this.resultado = "gcd( " + this.valueA + ", " + this.valueB + " ) = " + "( " + output.a + ", " + output.prevx + ", " + output.prevy + " )";
+                        } else {
+                            output = crt([[this.valueA1, this.valueB1], [this.valueA2, this.valueB2], [this.valueA3, this.valueB3]]);
+                            this.resultado = "n = " + output.n + " + " + output.mod1 + "z con z E Z.";
                         }
                     },
                     selectAlgorithm(value){
