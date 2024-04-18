@@ -46,8 +46,8 @@ const breakingCaesarCipher = ( cipher ) => {
   }
 }
 
-const plainTextResult = caesar_algorithm(plainText, shift, flag.encrypt);
-console.log(`The plaint text: ${plainText} encrypted is ${plainTextResult}`);
-const cipherTextResult = caesar_algorithm(cipherText, shift, flag.decrypt);
-console.log(`The cipher text: ${cipherText} decrypted is ${cipherTextResult}`);
-breakingCaesarCipher( cipherText );
+// const plainTextResult = caesar_algorithm(plainText, shift, flag.encrypt);
+// console.log(`The plaint text: ${plainText} encrypted is ${plainTextResult}`);
+// const cipherTextResult = caesar_algorithm(cipherText, shift, flag.decrypt);
+// console.log(`The cipher text: ${cipherText} decrypted is ${cipherTextResult}`);
+// breakingCaesarCipher( cipherText );

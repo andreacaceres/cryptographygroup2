@@ -31,7 +31,7 @@ const letterShift = ( asciiLetterCode, a, s, f ) => {
   return ( f ) ? ( a*asciiLetterCode ) + s : ( asciiLetterCode - s )*a;
 }
 
-const affineCipherEncryptDecrypt = ( input, a1, b1, flag ) => {
+export const affineCipherEncryptDecrypt = ( input, a1, b1, flag ) => {
   let output = '';
   let codeAscii = 0;
   const inputTextToArray = input.split('');
@@ -47,11 +47,13 @@ const affineCipherEncryptDecrypt = ( input, a1, b1, flag ) => {
     const asciiToLetter = String.fromCharCode( asciiCodeShiftMod );
     output = output + asciiToLetter;
   }
+  console.log("output es----->")
+  console.log(output)
   return output;
 }
 
-const cipherTextResult = affineCipherEncryptDecrypt( plainText, a, b, flag.decrypt );
-console.log( cipherTextResult );
-const a_inv = getInverseMultipleOf( a );
-const plainTextResult = affineCipherEncryptDecrypt ( cipherText, a_inv, b, flag.encrypt );
-console.log( plainTextResult );
+// const cipherTextResult = affineCipherEncryptDecrypt( plainText, a, b, flag.decrypt );
+// console.log( cipherTextResult );
+// const a_inv = getInverseMultipleOf( a );
+// const plainTextResult = affineCipherEncryptDecrypt ( cipherText, a_inv, b, flag.encrypt );
+// console.log( plainTextResult );

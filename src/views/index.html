@@ -16,6 +16,12 @@
         <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
         <link href="../assets/css/custom.css" rel="stylesheet"/>
 
+        <!-- Start Algorithms -->
+        <script src="../../algorithmsPythonToNode/AffinCipher.js"></script>
+        <script src="../../algorithmsPythonToNode/CaesarCipher.js"></script>
+        <script src="../../algorithmsPythonToNode/EuclideAlgorithm.js"></script>
+        <script src="../../algorithmsPythonToNode/CaesarCipher.js"></script>
+        <!-- /End Algorithms -->
     </head>
     <body>
         <div id="app">
@@ -34,8 +40,8 @@
                         </div>
                         <v-row class="mt-2 justify-center mb-4 px-10">
                             <v-col md="2" sm="6" xs="12">
-                                <v-card shaped class="rounded-card" @click="selectAlgorithm('AFFIN')">
-                                    <v-card-title class="card-title">Affin Cipher</v-card-title>
+                                <v-card shaped class="rounded-card" @click="selectAlgorithm(affinCipherCode)">
+                                    <v-card-title class="card-title">{{ affinCipherCode }}</v-card-title>
                                     <v-card-subtitle class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-subtitle>
                                     <v-card-actions>
                                         <v-btn icon>
@@ -45,8 +51,8 @@
                                 </v-card>
                             </v-col>
                             <v-col md="2" sm="6" xs="12">
-                                <v-card shaped class="rounded-card" @click="selectAlgorithm('CAESAR')">
-                                    <v-card-title class="card-title">Caesar Cipher</v-card-title>
+                                <v-card shaped class="rounded-card" @click="selectAlgorithm(caesarCipherCode)">
+                                    <v-card-title class="card-title">{{ caesarCipherCode }}</v-card-title>
                                     <v-card-subtitle class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-subtitle>
                                     <v-card-actions>
                                         <v-btn icon>
@@ -56,8 +62,8 @@
                                   </v-card>
                             </v-col>
                             <v-col md="2" sm="6" xs="12">
-                                <v-card shaped class="rounded-card" @click="selectAlgorithm('EUCLIDE')">
-                                    <v-card-title class="card-title">Euclide Cipher</v-card-title>
+                                <v-card shaped class="rounded-card" @click="selectAlgorithm(euclideCipherCode)">
+                                    <v-card-title class="card-title">{{ euclideCipherCode }}</v-card-title>
                                     <v-card-subtitle class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-subtitle>
                                     <v-card-actions>
                                         <v-btn icon>
@@ -67,8 +73,8 @@
                                   </v-card>
                             </v-col>
                             <v-col md="2" sm="6" xs="12">
-                                <v-card shaped class="rounded-card" @click="selectAlgorithm('CHINESE')">
-                                    <v-card-title class="card-title">Chinese Remainder</v-card-title>
+                                <v-card shaped class="rounded-card" @click="selectAlgorithm(chineseRemainderCode)">
+                                    <v-card-title class="card-title">{{ chineseRemainderCode }}</v-card-title>
                                     <v-card-subtitle class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-subtitle>
                                     <v-card-actions>
                                         <v-btn icon>
@@ -79,36 +85,53 @@
                             </v-col>
                         </v-row>
                         <div id="form_container_parent" class="d-flex justify-center mt-4" v-if="algType!=='' && algType!==null">
+                            
                             <div id="form_container" class="rounded">
+                                <div class="text-center pt-2"><h2>{{ algType }}</h2></div>
                                 <v-row class="pa-10">
-                                    <v-col cols="12">
+                                    <v-col cols="12" v-if="this.algType===this.affinCipherCode || this.algType===this.caesarCipherCode">
+                                        <v-select
+                                            v-model="cipherAction"
+                                            :items="itemsCipher"
+                                            label="Cipher action"
+                                            item-value="value" item-text="name"
+                                        ></v-select>
+                                    </v-col>
+                                    <v-col cols="12" v-if="this.algType===this.affinCipherCode || this.algType===this.caesarCipherCode">
                                         <v-text-field
-                                            :v-model="valueA"
+                                            v-model="valuePlaintext"
+                                            label="Text"
+                                        ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" v-if="this.algType===this.affinCipherCode">
+                                        <v-text-field
+                                            v-model="valueA"
                                             label="A Value"
-                                    ></v-text-field>
+                                        ></v-text-field>
                                     </v-col>
-                                    <v-col cols="12">
+                                    <v-col cols="12" v-if="this.algType===this.affinCipherCode">
                                         <v-text-field
-                                            :v-model="valueB"
+                                            v-model="valueB"
                                             label="B Value"
-                                    ></v-text-field>
+                                        ></v-text-field>
                                     </v-col>
-                                    <v-col cols="12">
+                                    <v-col cols="12" v-if="this.algType===this.caesarCipherCode">
                                         <v-text-field
                                             :v-model="valueShift"
                                             label="Shift Value"
-                                    ></v-text-field>
+                                        ></v-text-field>
                                     </v-col>
                                 </v-row>
                             </div>
+                        </div>
 
-                            <v-btn @click="calculate" class="mt-10 white--text submit-button">
-                                Calculate
-                            </v-btn>
+                        <v-btn @click="calculate" class="mt-10 white--text submit-button" v-if="algType!=='' && algType!==null">
+                            Calculate
+                        </v-btn>
 
-                            <div class="mt-4 white--text resultado">
-                                <h3>Resultado: </p> {{ resultado }}
-                            </div>
+                        <div class="white--text resultado text-center" v-if="algType!=='' && algType!==null && resultado!==''">
+                            <h3><b>Result:</b></h3>
+                            <span>{{ resultado }}</span>
                         </div>
                     </div>
 
@@ -139,17 +162,45 @@
                     //theme: { dark: true },
                 }),
                 data: {
+                    valuePlaintext: "",
                     valueA: "",
                     valueB: "",
                     valueShift: "",
                     algType: "",
                     resultado: "",
+                    itemsCipher: [
+                        {
+                            value: 1,
+                            name: "Encrypt"
+                        },
+                        {
+                            value: 0,
+                            name: "Decrypt"
+                        },
+                    ],
+                    cipherAction: 1, //1=encrypt, 0=decrypt
+                    affinCipherCode: "Affin Cipher",
+                    caesarCipherCode: "Caesar Cipher",
+                    euclideCipherCode: "Euclide Cipher",
+                    chineseRemainderCode: "Chinese Remainder",
                 },
                 methods:{
                     calculate(){
+                        if(this.algType===this.affinCipherCode){
+                            this.resultado = affineCipherEncryptDecrypt(this.valuePlaintext, this.valueA, this.valueB, this.cipherAction)
+                        }
+                        else if(this.algType===this.caesarCipherCode){
+                            this.resultado = caesar_algorithm(this.valuePlaintext, this.valueShift, this.cipherAction)
+                        }
                     },
                     selectAlgorithm(value){
                         this.algType = value
+                        this.resultado = ""
+                        this.valuePlaintext = ""
+                        this.valueA = ""
+                        this.valueB = ""
+                        this.valueShift = ""
+                        this.cipherAction = 1
                     }
                 }
               })

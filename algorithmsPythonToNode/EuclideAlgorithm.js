@@ -35,4 +35,3 @@ console.log( `El gcddiff( ${a}, ${b} ) = ${gdcdiffOutput} y se ejecuto en: ${end
 
 const lcmOutput = lcm( a, b );
 console.log(`Por lo tanto, el lcm( ${a}, ${b} ) = ${lcmOutput}`);
-console.log("test milton");
