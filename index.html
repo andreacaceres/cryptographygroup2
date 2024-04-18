@@ -20,7 +20,7 @@
         <script src="algorithmsPythonToNode/utils.js"></script>
         <script src="algorithmsPythonToNode/AffinCipher.js"></script>
         <script src="algorithmsPythonToNode/CaesarCipher.js"></script>
-        <!-- <script src="algorithmsPythonToNode/EuclideAlgorithm.js"></script> -->
+        <!-- <script src="algorithmsPythonToNode/EuclideAlgorithmExtended.js"></script> -->
         <!-- <script src="algorithmsPythonToNode/ChineseRemainderTheorem.js"></script> -->
         <!-- /End Algorithms -->
     </head>
@@ -72,7 +72,11 @@
                             <v-col md="2" sm="6" xs="12">
                                 <v-card shaped class="rounded-card" @click="selectAlgorithm(euclideCipherCode)">
                                     <v-card-title class="card-title">{{ euclideCipherCode }}</v-card-title>
-                                    <v-card-subtitle class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-subtitle>
+                                    <v-card-subtitle class="card-subtitle">
+                                        El algoritmo de Euclides extendido es una extensión del algoritmo de Euclides estándar. Es una herramienta 
+                                        poderosa para encontrar el MCD de dos números enteros y calcular simultáneamente los coeficientes enteros x,y
+                                        que satisfacen la ecuación ax+by=MCD(a,b).
+                                    </v-card-subtitle>
                                     <v-card-actions>
                                         <v-btn icon>
                                         <v-icon>mdi-calculator-variant</v-icon>
@@ -139,6 +143,7 @@
 
                         <div class="white--text resultado text-center" v-if="algType!=='' && algType!==null && resultado!==''">
                             <h3><b>Result:</b></h3>
+                            <!-- {{ if this.algType === this.euclideCipherCode }} -->
                             <span>{{ resultado }}</span>
                         </div>
                     </div>
@@ -199,6 +204,9 @@
                         }
                         else if(this.algType===this.caesarCipherCode){
                             this.resultado = caesar_algorithm(this.valuePlaintext, this.valueShift, this.cipherAction)
+                        }
+                        else if (this.algType === this.euclideCipherCode) {
+                            this.resultado = "gcd( " + this.valueA + ", " + this.valueB + " ) = " + "( " + gcdext(this.valueA, this.valueB).a + ", " + gcdext(this.valueA, this.valueB).prevx + ", " + gcdext(this.valueA, this.valueB).prevy + " )";
                         }
                     },
                     selectAlgorithm(value){

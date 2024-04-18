@@ -17,23 +17,24 @@ const gcdext = ( a1, b1 ) => {
     prevx: 1,
     x: 0,
     prevy: 0,
-    y: 1,
-    tmp: 0
+    y: 1
   };
-  let q;
+  a1 = parseInt(a1);
+  b1 = parseInt(b1);
+  let tmp;
   while ( b1 > 0 ) {
-    q = Math.floor( a1/b1 );
-    output.tmp = output.x;
+    const q = Math.floor( a1/b1 );
+    tmp = output.x;
     output.x = output.prevx - q*output.x;
-    output.prevx = output.tmp;
+    output.prevx = tmp;
 
-    output.tmp = output.y;
+    tmp = output.y;
     output.y = output.prevy - q*output.y;
-    output.prevy = output.tmp;
+    output.prevy = tmp;
 
-    output.tmp = a1;
+    tmp = a1;
     a1 = b1;
-    b1 = mod( output.tmp, b1 );
+    b1 = mod( tmp, b1 );
     output.a = a1;
   }
   return output;
