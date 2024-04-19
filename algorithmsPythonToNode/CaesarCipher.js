@@ -1,3 +1,10 @@
+/**
+ * Aplica el algoritmo César para encriptar o desencriptar un texto.
+ * @param {string} input - El texto a encriptar o desencriptar.
+ * @param {number|string} s - El número de posiciones para desplazar el alfabeto,también conocido como SHIFT.
+ * @param {boolean} flag - Verdadero para encriptar, falso para desencriptar.
+ * @returns {string} El texto encriptado o desencriptado.
+ */
 const caesar_algorithm = ( input, s, flag ) => {
   let output = '';
   let codeAscii = 0;

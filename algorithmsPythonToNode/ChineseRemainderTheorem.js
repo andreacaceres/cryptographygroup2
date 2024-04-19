@@ -1,3 +1,8 @@
+/**
+ * Resuelve un sistema de congruencias utilizando el Teorema del Residuo Chino (TRC).
+ * @param {Array<Array<number|string>>} input - Un array de arrays que representan las congruencias en el formato [residuo1, módulo1],.., [residuoN, móduloN].
+ * @returns {object} Un objeto que contiene la solución del sistema de congruencias.
+ */
 const crt = ( input ) => {
   let eqInput = {
     n: 0,

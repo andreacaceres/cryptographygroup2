@@ -1,3 +1,11 @@
+/**
+ * Encripta o desencripta un texto utilizando el cifrado afín.
+ * @param {string} input - El texto a encriptar o desencriptar.
+ * @param {number|string} a1 - La primera clave del cifrado afín.
+ * @param {number|string} b1 - La segunda clave del cifrado afín.
+ * @param {boolean} flag - Verdadero para encriptar, falso para desencriptar.
+ * @returns {string} El texto encriptado o desencriptado.
+ */
 const affineCipherEncryptDecrypt = ( input, a1, b1, flag ) => {
   let output = '';
   let codeAscii = 0;
