@@ -1,4 +1,5 @@
-<img src="./src/assets/images/logo-espol-fiec.png" alt="Logo" class="center">
+<p align="center"><img src="./src/assets/images/logo-espol-fiec.png" alt="Logo">
+</p>
 
 <h1 align="center">
   Proyecto Criptografía
