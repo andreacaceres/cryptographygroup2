@@ -1,4 +1,4 @@
-![ESPOL-FIEC](./src/assets/images/logo-espol-fiec.png)
+<img src="./src/assets/images/logo-espol-fiec.png" alt="Logo" class="center">
 
 <h1 align="center">
   Proyecto Criptografía
