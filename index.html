@@ -40,10 +40,10 @@
                             </h2>   
                         </div>
                         <v-row class="mt-2 justify-center mb-4 px-10">
-                            <v-col md="2" sm="6" xs="12">
+                            <v-col md="2" sm="12" xs="12">
                                 <v-card shaped class="rounded-card" @click="selectAlgorithm(caesarCipherCode)">
                                     <v-card-title class="card-title">{{ caesarCipherCode }}</v-card-title>
-                                    <v-card-subtitle class="card-subtitle">
+                                    <v-card-subtitle class="card-subtitle text-justify">
                                         El cifrado César es un tipo de cifrado de sustitución monoalfabético en el que cada letra en el texto original es desplazada un número fijo 
                                         de posiciones hacia la derecha en el alfabeto para obtener el texto cifrado. El cifrado César es fácilmente vulnerable a ataques de fuerza bruta y 
                                         análisis de frecuencia debido a su naturaleza predecible y patrones repetitivos.
@@ -58,7 +58,7 @@
                             <v-col md="2" sm="6" xs="12">
                                 <v-card shaped class="rounded-card" @click="selectAlgorithm(affinCipherCode)">
                                     <v-card-title class="card-title">{{ affinCipherCode }}</v-card-title>
-                                    <v-card-subtitle class="card-subtitle">
+                                    <v-card-subtitle class="card-subtitle text-justify">
                                         El cifrado afín es una extensión del cifrado César. Proporciona una mayor seguridad debido a la introducción del parámetro b, 
                                         que agrega un desplazamiento adicional en el cifrado. El cifrado afín es vulnerable a ataques y otros métodos criptoanalíticos más avanzados.
                                     </v-card-subtitle>
@@ -72,7 +72,7 @@
                             <v-col md="2" sm="6" xs="12">
                                 <v-card shaped class="rounded-card" @click="selectAlgorithm(euclideCipherCode)">
                                     <v-card-title class="card-title">{{ euclideCipherCode }}</v-card-title>
-                                    <v-card-subtitle class="card-subtitle">
+                                    <v-card-subtitle class="card-subtitle text-justify">
                                         El algoritmo de Euclides extendido es una extensión del algoritmo de Euclides estándar. Es una herramienta 
                                         poderosa para encontrar el MCD de dos números enteros y calcular simultáneamente los coeficientes enteros x,y
                                         que satisfacen la ecuación ax+by=MCD(a,b).
@@ -87,7 +87,7 @@
                             <v-col md="2" sm="6" xs="12">
                                 <v-card shaped class="rounded-card" @click="selectAlgorithm(chineseRemainderCode)">
                                     <v-card-title class="card-title">{{ chineseRemainderCode }}</v-card-title>
-                                    <v-card-subtitle class="card-subtitle">
+                                    <v-card-subtitle class="card-subtitle text-justify">
                                         El teorema del resto chino es un método matemático que permite resolver sistemas de congruencias simultáneas 
                                         de forma eficiente.</v-card-subtitle>
                                     <v-card-actions>
@@ -109,60 +109,86 @@
                                             :items="itemsCipher"
                                             label="Cipher action"
                                             item-value="value" item-text="name"
+                                            outlined
                                         ></v-select>
                                     </v-col>
                                     <v-col cols="12" v-if="this.algType===this.affinCipherCode || this.algType===this.caesarCipherCode">
                                         <v-text-field
                                             v-model="valuePlaintext"
                                             label="Text"
+                                            onkeydown="return /[a-zA-Z ]/i.test(event.key)"
+                                            outlined
                                         ></v-text-field>
                                     </v-col>
                                     <v-col cols="12" v-if="this.algType===this.affinCipherCode || this.algType===this.euclideCipherCode">
                                         <v-text-field
                                             v-model="valueA"
                                             label="A Value"
+                                            type="number"
+                                            outlined
                                         ></v-text-field>
                                     </v-col>
                                     <v-col cols="12" v-if="this.algType===this.affinCipherCode || this.algType===this.euclideCipherCode">
                                         <v-text-field
                                             v-model="valueB"
                                             label="B Value"
+                                            type="number"
+                                            outlined
                                         ></v-text-field>
                                     </v-col>
                                     <v-col cols="12" v-if="this.algType===this.caesarCipherCode">
                                         <v-text-field
                                             v-model="valueShift"
                                             label="Shift Value"
+                                            type="number"
+                                            outlined
                                         ></v-text-field>
                                     </v-col>
-                                    <v-col cols="12" v-if="this.algType===this.chineseRemainderCode">
-                                        n = <v-text-field
+                                    <v-col cols="6" v-if="this.algType===this.chineseRemainderCode">
+                                        N <v-text-field
                                             v-model="valueA1"
                                             label="r1"
+                                            type="number"
+                                            outlined
                                         ></v-text-field>
-                                        (mod n) = <v-text-field
+                                    </v-col>    
+                                    <v-col cols="6" v-if="this.algType===this.chineseRemainderCode">
+                                        (mod N) <v-text-field
                                             v-model="valueB1"
                                             label="N1"
+                                            type="number"
+                                            outlined
                                         ></v-text-field>
                                     </v-col>
-                                    <v-col cols="12" v-if="this.algType===this.chineseRemainderCode">
-                                        n = <v-text-field
+                                    <v-col cols="6" v-if="this.algType===this.chineseRemainderCode">
+                                        N <v-text-field
                                             v-model="valueA2"
                                             label="r2"
-                                        ></v-text-field>
-                                        (mod n) = <v-text-field
-                                            v-model="valueB2"
-                                            label="N2"
+                                            outlined
                                         ></v-text-field>
                                     </v-col>
-                                    <v-col cols="12" v-if="this.algType===this.chineseRemainderCode">
-                                        n = <v-text-field
+                                    <v-col cols="6" v-if="this.algType===this.chineseRemainderCode">
+                                        (mod N) <v-text-field
+                                            v-model="valueB2"
+                                            label="N2"
+                                            type="number"
+                                            outlined
+                                        ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="6" v-if="this.algType===this.chineseRemainderCode">
+                                        N <v-text-field
                                             v-model="valueA3"
                                             label="r3"
+                                            type="number"
+                                            outlined
                                         ></v-text-field>
-                                        (mod n) = <v-text-field
+                                    </v-col>
+                                    <v-col cols="6" v-if="this.algType===this.chineseRemainderCode">
+                                        (mod N) <v-text-field
                                             v-model="valueB3"
                                             label="N3"
+                                            type="number"
+                                            outlined
                                         ></v-text-field>
                                     </v-col>
                                 </v-row>
@@ -174,7 +200,7 @@
                         </v-btn>
 
                         <div class="white--text resultado text-center" v-if="algType!=='' && algType!==null && resultado!==''">
-                            <h3><b>Result:</b></h3>
+                            <h3><b>Result</b></h3>
                             <span>{{ resultado }}</span>
                         </div>
                     </div>
@@ -203,7 +229,7 @@
             new Vue({
                 el: '#app',
                 vuetify: new Vuetify({
-                    //theme: { dark: true },
+                    theme: { dark: true },
                 }),
                 data: {
                     valuePlaintext: "",

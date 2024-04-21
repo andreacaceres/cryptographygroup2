@@ -12,8 +12,11 @@
 
 #form_container {
     /*background-color: rgb(165 180 252);*/
-    background-color: rgb(226 232 240);
-    width: 50%;
+    /* background-color: rgb(226 232 240); */
+    width: 90%;
+    border-width: 1px 0;
+    border-style: outset;
+    border-color: #fff;
 }
 
 .v-sheet--shaped {
