@@ -6,6 +6,7 @@
  * @returns {string} El texto encriptado o desencriptado.
  */
 const caesar_algorithm = ( input, s, flag ) => {
+  let start = performance.now();
   let output = '';
   let codeAscii = 0;
   const shift = parseInt(s);
@@ -22,5 +23,7 @@ const caesar_algorithm = ( input, s, flag ) => {
     const asciiToLetter = String.fromCharCode( asciiCodeShiftMod );
     output = output + asciiToLetter;
   }
+  let end = performance.now();
+  console.log( `La función affineCipherEncryptDecrypt se ejecuto en: ${end - start} ms.` );
   return output;
 }

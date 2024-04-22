@@ -34,6 +34,7 @@ const letterShift = ( asciiLetterCode, s, f, a = 0 ) => {
  * junto con el máximo común divisor.
  */
 const gcdext = ( a1, b1 ) => {
+  let start = performance.now();
   const output = {
     prevx: 1,
     x: 0,
@@ -58,5 +59,7 @@ const gcdext = ( a1, b1 ) => {
     b1 = mod( tmp, b1 );
     output.a = a1;
   }
+  let end = performance.now();
+  console.log( `La función gcdext se ejecuto en: ${end - start} ms.` );
   return output;
 }

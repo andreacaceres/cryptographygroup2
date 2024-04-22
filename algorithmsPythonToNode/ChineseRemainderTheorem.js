@@ -4,6 +4,7 @@
  * @returns {object} Un objeto que contiene la solución del sistema de congruencias.
  */
 const crt = ( input ) => {
+  let start = performance.now();
   let eqInput = {
     n: 0,
     residuo1: 0,
@@ -24,7 +25,7 @@ const crt = ( input ) => {
       if ( gcdextResult.a === 1 ) {
         const x = gcdextResult.prevx;
         const y = gcdextResult.prevy;
-        eqInput.n = eqInput.residuo1*y*eqInput.mod2 + eqInput.residuo2*x*eqInput.mod1;
+        eqInput.n = mod(eqInput.residuo1*y*eqInput.mod2 + eqInput.residuo2*x*eqInput.mod1, eqInput.mod1 * eqInput.mod2);
         eqInput.residuo1 = eqInput.n;
         eqInput.mod1 = eqInput.mod1*eqInput.mod2;
         eqInput.residuo2 = 0;
@@ -35,8 +36,11 @@ const crt = ( input ) => {
         console.log('Error. No son numero coprimos.');
         eqInput.n = 0;
         eqInput.mod1 = 0;
+        break;
       }
     }
   }
+  let end = performance.now();
+  console.log( `La función crt se ejecuto en: ${end - start} ms.` );
   return eqInput;
 }
