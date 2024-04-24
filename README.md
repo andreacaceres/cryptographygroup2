@@ -7,6 +7,7 @@
 <p align="center">Proyecto para la materia criptografía con el objetivo de integrar los algoritmos dados en clases en un sistema computacional, el cual será un sistema web.</p>
 
 <p align="center">Para ver la demostración del Sistema Web, dar clic <a href="https://cryptography-group2.netlify.app/">aquí.</a></p>
+<p align="center">Para ver la documentación del Sistema Web, dar clic <a href="https://espolec-my.sharepoint.com/:w:/g/personal/alcacere_espol_edu_ec/EdgRGpKJjKFLiTG6M7ktCqgB5hQq1KNCEcUAYagIyZUjeA?e=78aR3U">aquí.</a></p>
 
 # Descripción
 Sistema web que presenta los algoritmos dados en clases, los cuales son:
